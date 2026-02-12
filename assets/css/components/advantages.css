@@ -12,7 +12,7 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    row-gap: 100px;
+    gap: 100px 20px;
 }
 .advantages__card--circle{
     width: 85px;
@@ -32,6 +32,7 @@
     flex-direction: row;
     gap: 20px;
     align-items: center;
+    flex: 0 0 calc(25% - 20px);
 }
 .advantages__card--title{
     font-size: 20px;

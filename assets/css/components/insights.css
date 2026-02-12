@@ -12,9 +12,15 @@
     flex-direction: row;
     gap: 20px;
 }
-.insights__cards-container img{
+.insights__cards-container .insights__img{
     width: 380px;
     object-fit: cover;
+}
+
+.insights__arrowImg{
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
 }
 .insights__card{
     position: relative;
@@ -43,14 +49,13 @@
     background-color: #fff;
     padding: 10px;
     border-radius: 50%;
-    color: #000;
-    rotate: calc(320deg);
     font-weight: 700; 
     font-size: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .insights__arrow:hover{
-    rotate: calc(0deg);
-    transition: background-color 0.5s ease;
-    color: #fff;
-    background-color: #000;
+    rotate: calc(50deg);
+    transition: rotate 0.5s ease;
 }
