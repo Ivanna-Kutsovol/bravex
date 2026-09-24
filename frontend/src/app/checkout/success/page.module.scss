@@ -1,0 +1,104 @@
+.successPage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 48px;
+  background:
+    radial-gradient(circle at top, rgba(8, 64, 244, 0.16), transparent 28%),
+    linear-gradient(180deg, #070707 0%, #111 100%);
+}
+
+.successCard {
+  width: min(100%, 860px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(8, 64, 244, 0.22), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    #111;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+  animation: successReveal 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.successBadge {
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(8, 64, 244, 0.16);
+  color: #9cb6ff;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.successTitle {
+  font-size: 42px;
+  line-height: 1.05;
+  color: #fff;
+}
+
+.successText {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 54ch;
+}
+
+.successMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.successMetaLabel {
+  font-size: 12px;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.successNumber {
+  font-size: 24px;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.successButton {
+  margin-top: 8px;
+  align-self: flex-start;
+  background: #0840f4;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 83px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.successButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(8, 64, 244, 0.28);
+  background: #1a50ff;
+}
+
+@keyframes successReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

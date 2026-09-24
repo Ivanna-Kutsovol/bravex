@@ -1,0 +1,265 @@
+@use "../../app/styles//mixins" as *;
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 60%;
+    color: #fff;
+}
+.cart__title{
+    @include titleCC;
+}
+.container{
+    @include containerCC;
+}
+.checkout{
+    &__steps {
+        display: flex;
+        gap: 28px;
+        margin-bottom: 10px;
+    }
+    &__step {
+        background: transparent;
+        border: none;
+        color: #7f7f7f;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        padding: 6px 0;
+    }
+    &__step--active {
+        color: #fff;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+    }
+    &__section {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    &__products{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    &__product{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 18px;
+        border-radius: 10px;
+        background: #161616;
+    }
+    &__productInfo{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    &__productImage{
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    &__productTitle{
+        font-size: 14px;
+        color: #fff;
+    }
+    &__productMeta{
+        font-size: 12px;
+        color: #cfcfcf;
+        margin-top: 4px;
+    }
+    &__productPrice{
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    &__section-title {
+        font-size: 14px;
+        line-height: 40px;
+        text-transform: uppercase;
+        color: #cfcfcf;
+    }
+    &__field {
+        display: flex;
+    }
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+    &__input {
+        width: 100%;
+        border: 1px solid transparent;
+        background: #161616;
+        color: #fff;
+        border-radius: 10px;
+        padding: 16px 23px;
+        font-size: 14px;
+        outline: none;
+        font-weight: 300;
+    }
+    &__input::placeholder {
+        color: #fff;
+    }
+    &__input:focus,
+    &__input--focus {
+        border-color: #fff;
+    }
+    &__radio {
+        display: grid;
+        grid-template-columns: 18px 1fr auto;
+        align-items: start;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        cursor: pointer;
+    }
+    &__radio:last-child {
+        border-bottom: none;
+    }
+    &__radio input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    &__radio-mark {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #7f7f7f;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        margin-top: 2px;
+    }
+    &__radio input:checked + &__radio-mark {
+        border-color: #1b4dff;
+    }
+    &__radio input:checked + &__radio-mark::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #1b4dff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+    &__radio-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+&__radio-title {
+    font-size: 14px;
+    color: #fff;
+}
+
+&__radio-subtitle {
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+&__price {
+    font-size: 14px;
+    color: #fff;
+    padding-left: 10px;
+    white-space: nowrap;
+}
+
+    &__btn {
+        margin-top: 8px;
+        align-self: flex-start;
+        background: #0840F4;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 16px 83px;
+        font-size: 14px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+    &__btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(8, 64, 244, 0.28);
+        background: #1a50ff;
+    }
+&__btn:disabled{
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+&__payment {
+    margin-top: 20px;
+}
+
+&__payment .woocommerce-checkout-payment {
+    margin-top: 16px;
+}
+
+&__payment .payment_methods {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+&__payment .wc_payment_method {
+    background: rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+&__payment .wc_payment_method label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+&__payment .wc_payment_method input {
+    accent-color: #1b4dff;
+}
+
+&__payment .payment_box {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #ffffffcc;
+    line-height: 1.5;
+}
+
+&__payment .woocommerce-privacy-policy-text,
+&__payment .woocommerce-terms-and-conditions-wrapper {
+    font-size: 12px;
+    color: #ffffffcc;
+    line-height: 1.5;
+}
+
+&__payment .place-order {
+    margin-top: 16px;
+}
+
+&__payment .place-order .cart__summary__btn {
+    padding-left: 83px;
+}
+}

@@ -1,0 +1,48 @@
+@use "../../../app/styles/mixins" as *;
+
+.block__header{
+    @include sectionHeader;
+    position: absolute;
+    width: 100%;
+    padding: 45px 40px 0 40px;
+}
+.collection{
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    padding: 180px 0 0 0;
+}
+.img-container{
+    pointer-events: none;
+}
+.collection__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.collection__mainText{
+    font-size: 90px;
+    font-weight: 100;
+    line-height: 90px;
+}
+.collection__price{
+    font-size: 35px;
+    font-weight: 100;
+}
+.collection__text{
+    max-width: 185px;
+}
+.block__content{
+    @include feature-overlay;
+}
+.block__content--main{
+    @include glass-tabs;
+}
+.container-btn{
+    @include btn;
+}
+.block__content--main .block__card--active {
+    background-color: #0840F4;
+    border: none;
+}

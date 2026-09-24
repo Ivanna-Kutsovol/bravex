@@ -1,0 +1,36 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bravex-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:sqlserver://host.docker.internal:1433;databaseName=home_store;encrypt=true;trustServerCertificate=true"
+      SPRING_DATASOURCE_USERNAME: "sa"
+      SPRING_DATASOURCE_PASSWORD: "NewStrongPassword123!"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: "none"
+    networks:
+      - bravex-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: "http://localhost:8080"
+    container_name: bravex-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      API_URL: "http://backend:8080"
+      NEXT_PUBLIC_API_URL: "http://localhost:8080"
+    depends_on:
+      - backend
+    networks:
+      - bravex-network
+
+networks:
+  bravex-network:
+    driver: bridge

@@ -1,0 +1,60 @@
+@use "../../../app/styles/mixins" as *;
+
+.newItem{
+    position: relative;
+    width: 100%;
+}
+.newItems__header{
+    @include sectionHeader;
+    margin: 150px 15px 45px 40px;
+}
+.block__title{
+    font-size: 35px;
+}
+.newItems__cards-container{
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+.newItems__cards{
+    transition: transform 0.45s ease;
+    will-change: transform;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.newItems__card{
+    @include productCardBase;
+    width: 380px;
+    min-width: 380px;
+    flex: 0 0 380px;
+}
+
+.newItems__img{
+    @include productCardImage(auto, 380px);
+}
+.newItems__content{
+    @include productCardContent;
+}
+.newItems__titleWrapper{
+    @include productCardTitleWrapper;
+}
+.newItems__title,
+.newItems__price{
+    @include productCardTitleText;
+}
+.newItems__description{
+    font-size: 14px;
+    font-weight: 400;
+    color: #565656;
+}
+.newItems__plus{
+    @include productCardPlus;
+}
+.newItems__plus:hover{
+    background-color: #000;
+    color: #fff;
+}
+.block__arrows{
+    @include arrow;
+}

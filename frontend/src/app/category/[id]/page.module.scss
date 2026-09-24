@@ -1,0 +1,265 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+
+  &__head {
+    margin-bottom: 24px;
+  }
+
+  &__head h1 {
+    margin: 40px 0;
+    font-size: 36px;
+    @include sectionHeader;
+  }
+
+  &__products{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.breadcrumbs {
+  @include breadcrumbs;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 380px);
+  gap: 20px;
+  justify-content: start;
+}
+
+.filterPanel {
+  width: 100%;
+  background: linear-gradient(180deg, #151a2a 0%, #101525 100%);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 18px;
+  height: fit-content;
+}
+
+.filterHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.filterHeaderRow h2 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.filterSaveBtn {
+  border: 0;
+  border-radius: 18px;
+  padding: 12px 28px;
+  background: #2b3142;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filterBlock {
+  margin-bottom: 22px;
+}
+
+.filterBlock h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.rangeWrap {
+  position: relative;
+  height: 30px;
+  --range-min: 0%;
+  --range-max: 100%;
+}
+
+.rangeWrap::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 10px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to right,
+    #e6e6e6 0,
+    #e6e6e6 var(--range-min),
+    #004cfc var(--range-min),
+    #004cfc var(--range-max),
+    #e6e6e6 var(--range-max),
+    #e6e6e6 100%
+  );
+}
+
+.rangeInput {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #004CFC;
+  border: 0;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.rangeInput::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #004CFC;
+  border: 0;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.rangeInput::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.rangeInput::-moz-range-track {
+  height: 10px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.rangeLabel {
+  margin: 10px 0 0;
+  color: #d0d0d0;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip,
+.chipActive {
+  border: 0;
+  border-radius: 999px;
+  min-width: 90px;
+  padding: 10px 16px;
+  background: #2b3142;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chipActive {
+  background: #004CFC;
+}
+
+.filteredCount {
+  margin: 0 0 16px;
+  color: #cfcfcf;
+}
+
+.card {
+  @include productCardBase;
+  color: inherit;
+  width: 300px;
+  height: fit-content;
+}
+
+.cardImage {
+  @include productCardImage(auto, 300px);
+}
+
+.cardContent {
+  @include productCardContent;
+}
+
+.cardTitleWrapper {
+  @include productCardTitleWrapper;
+}
+
+.cardTitle,
+.cardPrice {
+  @include productCardTitleText;
+}
+
+.cardTitle {
+  margin: 0;
+  color: #000;
+  max-width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardPrice {
+  margin: 0;
+}
+
+.cardPlus {
+  @include productCardPlus;
+}
+
+.cardPlus:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+@media (min-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 300px);
+    height: fit-content;
+  }
+}
+
+@media (max-width: 830px) {
+  .filterPanel {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .filterHeaderRow h2 {
+    font-size: 26px;
+  }
+
+  .filterBlock h3 {
+    font-size: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .cardImage {
+    @include productCardImage(auto, 100%);
+  }
+}

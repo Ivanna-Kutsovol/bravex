@@ -1,0 +1,37 @@
+services:
+  backend:
+    image: maven:3.9.9-eclipse-temurin-21
+    container_name: bravex-backend-dev
+    working_dir: /workspace
+    command: ["mvn", "clean", "spring-boot:run"]
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:sqlserver://host.docker.internal:1433;databaseName=home_store;encrypt=true;trustServerCertificate=true"
+      SPRING_DATASOURCE_USERNAME: "sa"
+      SPRING_DATASOURCE_PASSWORD: "NewStrongPassword123!"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: "none"
+    volumes:
+      - ./backend:/workspace
+      - maven-cache:/root/.m2
+    ports:
+      - "8080:8080"
+  frontend:
+    image: node:20-alpine
+    container_name: bravex-frontend-dev
+    working_dir: /workspace
+    command: ["sh", "-c", "if [ ! -f node_modules/.bin/next ]; then npm ci; fi && npm run dev -- -H 0.0.0.0 -p 3000"]
+    environment:
+      API_URL: "http://backend:8080"
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+      NEXT_TELEMETRY_DISABLED: "1"
+    volumes:
+      - ./frontend:/workspace
+      - frontend-node-modules:/workspace/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  maven-cache:
+  frontend-node-modules:
